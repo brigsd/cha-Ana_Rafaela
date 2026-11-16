@@ -1,7 +1,7 @@
 const API_URL = window.CHA_API;
 const apiConfigured = /^https:/.test(API_URL || '');
-const rsvpKey = 'cha-edimara-rsvp-token';
-const cacheKey = 'cha-edimara-cache-v1';
+const rsvpKey = 'cha-ana-rafaela-rsvp-token';
+const cacheKey = 'cha-ana-rafaela-cache-v1';
 let currentEvent = null;
 
 const $ = (selector) => document.querySelector(selector);
