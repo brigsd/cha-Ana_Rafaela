@@ -1,6 +1,6 @@
 # Chá da Ana Rafaela
 
-[![Acessar](https://img.shields.io/badge/Acessar-E97D98?style=for-the-badge&logo=githubpages&logoColor=white)](https://brigsd.github.io/cha-Edimara/)
+[![Acessar](https://img.shields.io/badge/Acessar-E97D98?style=for-the-badge&logo=githubpages&logoColor=white)](https://brigsd.github.io/cha-Ana_Rafaela/)
 
 Convite digital para o chá da Ana Rafaela, com confirmação de presença e uma lista de sugestões de presentes, sem criar conta ou fazer login.
 
