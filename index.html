@@ -1,0 +1,110 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#e97d98" />
+    <meta name="description" content="Chá da Edimara" />
+    <title>Chá da Edimara</title>
+    <link rel="preconnect" href="https://script.google.com" />
+    <link rel="preconnect" href="https://script.googleusercontent.com" crossorigin />
+    <script>
+      // Endereço da API (Google Apps Script). Fonte única, usada também pelo app.js.
+      window.CHA_API = 'COLE_AQUI_A_URL_DO_APPS_SCRIPT';
+      // O app.js só executa depois das folhas de estilo. Disparando a busca aqui,
+      // ela acontece em paralelo com o resto do carregamento da página.
+      window.CHA_PREFETCH = /^https:/.test(window.CHA_API)
+        ? { configuracao: fetch(window.CHA_API + '?action=configuracao').then(function (r) { return r.json(); }).catch(function () { return null; }) }
+        : {};
+    </script>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <!-- Carregada sem bloquear a renderização: as fontes já usam display=swap. -->
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,600;0,700;1,600&display=swap" rel="stylesheet" media="print" onload="this.media='all'" />
+    <noscript><link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,600;0,700;1,600&display=swap" rel="stylesheet" /></noscript>
+    <link rel="stylesheet" href="style.css?v=1" />
+  </head>
+  <body>
+    <a class="skip-link" href="#evento">Ir para o conteúdo</a>
+    <header class="hero" id="inicio">
+      <div class="sparkles" aria-hidden="true">✦　♡　✧　★　♡　✦　✧</div>
+      <div class="hero-content">
+        <p class="eyebrow">Um dia muito especial está chegando</p>
+        <h1>Chá da<br /><em>Edimara</em></h1>
+        <p class="hero-copy">Venha celebrar esse momento com a gente!</p>
+      </div>
+      <div class="balloon balloon-one" aria-hidden="true"></div>
+      <div class="balloon balloon-two" aria-hidden="true"></div>
+    </header>
+
+    <main>
+      <section class="welcome section-narrow">
+        <h2>Olá, família e amigos!</h2>
+        <p>Preparamos este cantinho com carinho para dividir a alegria desse momento. Aqui vocês encontram as informações do encontro, confirmam presença e veem algumas sugestões de presente.</p>
+      </section>
+
+      <section class="section card-section" id="evento">
+        <div class="section-heading">
+          <p class="eyebrow">Guarde esta data</p>
+          <h2>Informações do evento</h2>
+        </div>
+        <div class="event-grid">
+          <article class="event-item">
+            <span class="event-icon" aria-hidden="true">◷</span>
+            <div><p class="event-label">Data e horário</p><strong id="event-date">Carregando...</strong></div>
+          </article>
+          <article class="event-item">
+            <span class="event-icon" aria-hidden="true">⌖</span>
+            <div><p class="event-label">Local</p><strong id="event-address">Carregando...</strong></div>
+          </article>
+          <article class="event-item event-observation">
+            <span class="event-icon" aria-hidden="true">i</span>
+            <div><p class="event-label">Observações</p><span id="event-note">Carregando...</span></div>
+          </article>
+        </div>
+        <div class="event-actions">
+          <button class="button button-soft" id="copy-address" type="button">Copiar endereço</button>
+          <a class="button button-soft" id="open-map" href="#" target="_blank" rel="noopener" hidden>Ver no mapa</a>
+        </div>
+      </section>
+
+      <section class="section card-section" id="presenca">
+        <div class="section-heading">
+          <p class="eyebrow">Vamos nos encontrar?</p>
+          <h2>Confirmar presença</h2>
+          <p>Informe o seu nome para entrar na lista de convidados.</p>
+        </div>
+        <form class="rsvp-form" id="rsvp-form">
+          <fieldset>
+            <legend>Você poderá ir?</legend>
+            <label class="choice"><input type="radio" name="resposta" value="sim" required /> <span>Sim, vou ao evento</span></label>
+            <label class="choice"><input type="radio" name="resposta" value="nao" /> <span>Não vou conseguir ir</span></label>
+          </fieldset>
+          <label class="field" id="name-label">Seu nome
+            <input id="guest-name" name="nome" type="text" maxlength="80" autocomplete="name" required />
+          </label>
+          <button class="button button-primary" id="rsvp-submit" type="submit">Enviar resposta</button>
+          <p class="form-message" id="rsvp-message" aria-live="polite"></p>
+        </form>
+      </section>
+
+      <section class="section card-section" id="presentes">
+        <div class="section-heading">
+          <p class="eyebrow">Com muito carinho</p>
+          <h2>Sugestões de presentes</h2>
+          <p>Algumas ideias do que será bem-vindo. Não é preciso avisar, é só trazer no dia.</p>
+        </div>
+        <ul class="suggestion-list" id="suggestion-list">
+          <li class="suggestion is-skeleton" aria-hidden="true"><span class="suggestion-image"></span><h3></h3></li>
+          <li class="suggestion is-skeleton" aria-hidden="true"><span class="suggestion-image"></span><h3></h3></li>
+          <li class="suggestion is-skeleton" aria-hidden="true"><span class="suggestion-image"></span><h3></h3></li>
+          <li class="suggestion is-skeleton" aria-hidden="true"><span class="suggestion-image"></span><h3></h3></li>
+        </ul>
+      </section>
+    </main>
+
+    <footer>Feito com carinho para o chá da Edimara ♡</footer>
+    <div class="celebration" id="celebration" aria-hidden="true"></div>
+    <script src="app.js?v=1"></script>
+  </body>
+</html>
